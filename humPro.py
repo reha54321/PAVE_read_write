@@ -4,9 +4,8 @@ import numpy as np
 
 
 class humPro:
-    def __init__(
-        self, bePin, cmdPin, ctsPin, txPin, rxPin, modeIndPin
-    ):
+    def __init__(self, crespPin, bePin, cmdPin, ctsPin, txPin, rxPin, modeIndPin):
+        self.CRESP = Pin(crespPin, Pin.IN)  # CRESP pin (FOR INTERRUPT)
         self.BE = Pin(bePin, Pin.IN)  # BE pin (CAN BE READ THROUGH LSTATUS IF NEEDED)
         self.CMD = Pin(cmdPin, Pin.OUT)  # CMD pin
         self.CTS = Pin(ctsPin, Pin.IN)  # CTS pin
@@ -14,9 +13,7 @@ class humPro:
         self.RX = Pin(rxPin, Pin.IN)  # RX pin
         self.MODE_IND = Pin(modeIndPin, Pin.IN)  # MODE_IND pin
 
-
         self.uart = UART(1, 9600, tx=self.TX, rx=self.RX)  # initialize UART
-
 
     # used to configure the HumPRO's settings
     def configure(self):
