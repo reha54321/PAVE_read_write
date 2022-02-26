@@ -8,10 +8,11 @@ compass = HMC5883L()
 gps = BN880()
 rf = humPro(crespPin=32, bePin = 27, cmdPin = 31, ctsPin = 29, txPin = 31, rxPin = 22, modeIndPin = 24, buttonPin = 9)
 
+rf.CRESP.irq(trigger=Pin.IRQ_RISING, handler=self.readData)
+rf.BUTTON.irq(trigger=Pin.IRQ_RISING, handler=self.transmitRandNumber)
+
 while True:
     sleep(0.5)
     x, y, z = compass.read()
     print(compass.format_result(x, y, z))
     print(gps.read())
-    rf.transmitRandNumber()
-    rf.readData()
