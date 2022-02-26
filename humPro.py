@@ -18,9 +18,6 @@ class humPro:
 
         self.uart = UART(1, 9600, tx=self.TX, rx=self.RX)  # initialize UART
 
-        # attach interrupt handlers
-        self.CRESP.irq(trigger=Pin.IRQ_RISING, handler=self.readData)
-        self.BUTTON.irq(trigger=Pin.IRQ_RISING, handler=self.transmitRandNumber)
 
     # used to configure the HumPRO's settings
     def configure(self):
