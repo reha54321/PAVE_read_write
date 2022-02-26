@@ -4,11 +4,14 @@ from time import sleep
 from bn880 import BN880
 
 # Please check that correct PINs are set on hmc5883l library!
-sensor = HMC5883L()
+compass = HMC5883L()
 gps = BN880()
+rf = humPro(crespPin=32, bePin = 27, cmdPin = 31, ctsPin = 29, txPin = 31, rxPin = 22, modeIndPin = 24, buttonPin = 9)
 
 while True:
     sleep(0.5)
-    x, y, z = sensor.read()
-    print(sensor.format_result(x, y, z))
+    x, y, z = compass.read()
+    print(compass.format_result(x, y, z))
     print(gps.read())
+    rf.transmitRandNumber()
+    rf.readData()
