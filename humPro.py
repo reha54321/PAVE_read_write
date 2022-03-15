@@ -50,7 +50,12 @@ class humPro:
 
         return num
 
-    def transmitTelemetry(self, path, commandString, position):
-        string = str(path) + " " + str(commandString) + " " + str(position)
+    def transmitCommands(self, commandString, waypoint):
+        string = str(commandString) + " " + str(waypoint)
+
+        self.transmitData(string)
+
+    def transmitTelemetry(self, path, position, st):
+        string = str(path) + " " + str(position) + " " + str(st)
 
         self.transmitData(string)
