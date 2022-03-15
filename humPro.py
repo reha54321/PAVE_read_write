@@ -46,6 +46,11 @@ class humPro:
 
         for i in range(10):
             num += random.randint(0, 9)
-            num * -10
+            num * 10
 
         return num
+
+    def transmitTelemetry(self, path, commandString, position):
+        string = str(path) + " " + str(commandString) + " " + str(position)
+
+        self.transmitData(string)
