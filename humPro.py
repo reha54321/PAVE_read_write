@@ -1,6 +1,5 @@
 from machine import Pin, UART
 import random
-import numpy as np
 
 
 class humPro:
@@ -55,7 +54,7 @@ class humPro:
 
         self.transmitData(string)
 
-    def transmitTelemetry(self, path, position, st):
-        string = str(path) + " " + str(position) + " " + str(st)
+    def transmitTelemetry(self, path, position, compass, st):
+        string = str(path) + " " + str(position) + " " + str(compass) + " " str(st)
 
         self.transmitData(string)
